@@ -205,31 +205,74 @@ const positiveNegative = function(num1, num2){
 // Create a function to create new string with first 3 characters are in lower case and the others in upper case. If the string length is less than 3 convert all the characters in upper case. 
 
 const upperCharMania = function(value){
-    
+    let lastvalue = value.substring(3).toUpperCase()
+    let firstvalue = value.substring(0,3)
+    let finalValue = firstvalue+lastvalue
+    if (value.length <= 3){
+        return value.toUpperCase()
+    } else {
+        return finalValue
+    }
 }
 
-console.log(upperCharMania("sofania"));
 
-/*
-17)
-Create a function to calculate the sum of the two given integers, If the sum is in the range 50..80 return 65 other wise return 80.
+// E X E R C I S E   S E V E N T E E N
+// Create a function to calculate the sum of the two given integers, If the sum is in the range 50..80 return 65 other wise return 80.
 
-18)
-Create a function to convert a number to a string, the content of which depends on the number's factors. Follow next example:
+const twoDrunkIntegers = function(num1, num2){
+    let sum = num1 + num2
+    if(sum > 50 || sum < 80){
+        return 65
+    } else {
+        return 80
+    }
+}
 
-If the number has 3 as a factor, output 'Diego'.
-If the number has 5 as a factor, output 'Riccardo'.
-If the number has 7 as a factor, output 'Stefano'.
-If the number does not have 3, 5, or 7 as a factor, just pass the number's digits straight through.
-Examples
-28's factors are 1, 2, 4, 7, 14, 28.
-this would be a simple "Stefano".
-30's factors are 1, 2, 3, 5, 6, 10, 15, 30.
-this would be a "DiegoRiccardo".
-34 has four factors: 1, 2, 17, and 34.
-this would be "34".
 
-19)
-Create a function that given a phrase returns its acronym, like British Broadcasting Corporation returns BBC
 
-*/
+// E X E R C I S E   E I G H T E E N
+// Create a function to convert a number to a string, the content of which depends on the number's factors. Follow next example:
+
+// If the number has 3 as a factor, output 'Diego'.
+// If the number has 5 as a factor, output 'Riccardo'.
+// If the number has 7 as a factor, output 'Stefano'.
+// If the number does not have 3, 5, or 7 as a factor, just pass the number's digits straight through.
+// Examples
+// 28's factors are 1, 2, 4, 7, 14, 28.
+// this would be a simple "Stefano".
+// 30's factors are 1, 2, 3, 5, 6, 10, 15, 30.
+// this would be a "DiegoRiccardo".
+// 34 has four factors: 1, 2, 17, and 34.
+// this would be "34".
+
+
+const convertToString = function(num, num2){
+    let array = []
+    for(let i=1; i <= num; i++){
+        if(num%i == 0){
+            array.push(i);
+        }
+
+    }
+    if(array.includes(3)){
+        return "Three"
+    } else if(array.includes(4)){
+        return "George"
+    }
+}
+
+
+
+// E X E R C I S E   N I N E T E E N
+// Create a function that given a phrase returns its acronym, like British Broadcasting Corporation returns BBC
+
+const returnAcronym = function(string){
+    let array = string.split(" ")
+    let acronym = []
+    for(let i = 0; i<array.length; i++){
+        if(array[i].charAt(0) == array[i].toUpperCase().charAt(0)){
+            acronym.push(array[i].charAt(0))
+        }
+    }
+    return acronym.join("")
+}

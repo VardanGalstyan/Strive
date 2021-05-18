@@ -1,12 +1,27 @@
-/* 1) MAX CHAR
+// E X E R C I S E   O N E
+// M A X - C H A R
 
-Given a string, return the character that is most
-commonly used in the string.
+// Given a string, return the character that is most commonly used in the string.
 
---- Examples
-    maxChar("abcccccccd") === "c"
-    maxChar("apple 1231111") === "1"
-*/
+//     E X A M P L E S
+//     maxChar("abcccccccd") === "c"
+//     maxChar("apple 1231111") === "1"
+
+const maxChar = function(str){
+    let count = []
+    let array = []
+    for(let i of [...str]){
+        if(count.indexOf(i) === -1 ){
+            count.push(i)
+        } else {
+            array.push(i)
+        }
+    } 
+    return array
+    
+}
+
+console.log(maxChar("americano"));
 
 /* 2) ANAGRAMS
 
