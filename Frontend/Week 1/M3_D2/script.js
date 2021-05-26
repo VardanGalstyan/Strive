@@ -6,7 +6,7 @@ window.onload = () => {
 
 
 const fetchResult = () => {
-    fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem")
+    fetch("http://www.splashbase.co/api/v1/images/latest")
     .then(response => response.json())
     .then(data => {
         console.log(data)
