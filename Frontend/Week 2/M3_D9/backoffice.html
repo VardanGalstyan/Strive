@@ -15,6 +15,7 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css">
 
     <title>Hello, world!</title>
   </head>
@@ -23,15 +24,7 @@
       <div class="container-fluild">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">Amazon</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
@@ -47,67 +40,41 @@
         </nav>
       </div>
     </header>
-
-    <main>
+<!-- Main body starts here! -->
+    <main id="backoffice">
       <div class="container mt-5">
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <h2 class="mt-5 mb-3">Backoffice</h2>
+            <div class="d-flex justify-content-between mt-5 mb-3">
+              <span><h2 class="">Backoffice</h2></span>
+              <div id="spinner" class="spinner-border spinner-border-sm d-none " role="status"></div>
+            </div>
+            <div id="alert"></div>
             <form onsubmit="handleSubmit(event)">
               <div class="form-group">
                 <label for="name">Item name</label>
-                <input
-                  id="name"
-                  type="text"
-                  class="form-control"
-                  aria-describedby="name"
-                />
-                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                <input id="name" type="text" class="form-control" aria-describedby="name"/>
               </div>
-
               <div class="form-group">
                 <label for="description">Item description</label>
-                <textarea
-                  id="description"
-                  type="text"
-                  rows="6"
-                  class="form-control"
-                  aria-describedby="item description"
-                ></textarea>
+                <textarea id="description" type="text" rows="6" class="form-control" aria-describedby="item description"></textarea>
               </div>
               <div class="form-group">
                 <label for="brand">Item Brand</label>
-                <input
-                  id="brand"
-                  type="text"
-                  class="form-control"
-                  aria-describedby="brand"
-                />
-                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                <input id="brand" type="text" class="form-control" aria-describedby="brand"/>
               </div>
               <div class="form-group">
                 <label for="image">Item Image link</label>
-                <input
-                  id="image"
-                  type="text"
-                  class="form-control"
-                  aria-describedby="image"
-                />
+                <input id="image" type="text" class="form-control" aria-describedby="image"/>
               </div>
               <div class="form-group">
                 <label for="price">Item price</label>
-                <input
-                  id="price"
-                  type="number"
-                  class="form-control"
-                  aria-describedby="ticket price"
-                />
+                <input id="price" type="number" class="form-control" aria-describedby="ticket price"/>
               </div>
-              <div class="col d-flex justify-content-between">
+              <div class="col d-flex justify-content-between m-0 p-0 mb-5 ">
                 <input type="submit" class="btn btn-primary" value="Submit" />
-                <button type="button" id="delete" class="btn btn-danger d-none" onclick="handleDelete()">Danger</button>
+                <button type="button" id="delete" class="btn btn-danger d-none" onclick="handleDelete()"><i class="far fa-trash-alt"></i></button>
               </div>
-
             </form>
           </div>
         </div>
@@ -130,7 +97,7 @@
       /// Start - Getting the ID from the Page
       const urlParams = new URLSearchParams(window.location.search)
       let eventId = urlParams.get("id")
-
+      const myAuthorization = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFlM2M4NWNlYWY0ODAwMTVjOTE4NjgiLCJpYXQiOjE2MjIwMzE0OTMsImV4cCI6MTYyMzI0MTA5M30.FQjG7jZWLuZTfrDlUAIH6AK1XFrwNvSgEU5YJOdRsRI"
 
       const endPoint = eventId
       ?'https://striveschool-api.herokuapp.com/api/product/' + eventId
@@ -139,14 +106,12 @@
       const method = eventId ? "PUT" : "POST";
 
       window.onload = async () => {
-        console.log( "This One!" + eventId);
 
         if(eventId){
           document.querySelector("main h2").innerHTML += `   - Edit Event`
 
           const response = await fetch(endPoint, {
-                headers: { "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFlM2M4NWNlYWY0ODAwMTVjOTE4NjgiLCJpYXQiOjE2MjIwMzE0OTMsImV4cCI6MTYyMzI0MTA5M30.FQjG7jZWLuZTfrDlUAIH6AK1XFrwNvSgEU5YJOdRsRI"
-                }
+                headers: { "Authorization": `${myAuthorization}`}
             })
           const eventDetails = await response.json();
 
@@ -156,12 +121,10 @@
 
         } else {
           document.querySelector("main h2").innerHTML += `   - Create an Event`
-          
         }
       }
 
       const objModel = {
-
         name: "",
         description: "",
         brand: "",
@@ -178,9 +141,9 @@
       };
       
       const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
+        spinnerToggle(true) 
         const url = 'https://striveschool-api.herokuapp.com/api/product/'
-        console.log(url);
         
         const myItems = {
           name: document.getElementById("name").value,
@@ -197,44 +160,66 @@
             method,
             body: JSON.stringify(myItems),
             headers: {
-              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFlM2M4NWNlYWY0ODAwMTVjOTE4NjgiLCJpYXQiOjE2MjIwMzE0OTMsImV4cCI6MTYyMzI0MTA5M30.FQjG7jZWLuZTfrDlUAIH6AK1XFrwNvSgEU5YJOdRsRI",
+              "Authorization": `${myAuthorization}`,
               "Content-Type": "application/json",
             },
           });
-
-  
-          console.log(response);
+          if (response.ok) {
+            spinnerToggle(false);
+            window.location.assign("./index.html"); 
+          } else {
+            alertToggle(true, "Something went Wrong!");
+          }
 
         } catch (err) {
           alert(err.message)
-
         }
-
-
-
-
       }
 
       const handleDelete = async () => {
-        // this function is fired from the delete button and will have the endpoint + eventId and a DELETE method for the API request
         try {
           const response = await fetch(endPoint, {
           headers: {
-              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFlM2M4NWNlYWY0ODAwMTVjOTE4NjgiLCJpYXQiOjE2MjIwMzE0OTMsImV4cCI6MTYyMzI0MTA5M30.FQjG7jZWLuZTfrDlUAIH6AK1XFrwNvSgEU5YJOdRsRI",
-              "Content-Type": "application/json",
-            }, 
+            "Authorization": `${myAuthorization}`,
+            "Content-Type": "application/json",
+          }, 
           method: "DELETE" });
           if (response.ok) {
-            alert("Event deleted successfully");
-            window.location.assign("./index.html"); // redirects the user to the homepage since the record got deleted
+            alertToggle(true, "Item is deleted succesfully!");
           } else {
-            alert("something went wrong with the deletion process");
+            alertToggle(true, "Deletion process is unsuccesful!");
           }
         } catch (error) {
           console.log(error.message);
         }
       };
 
+      // Functions to utilze
+      //Alerts
+      const alertToggle = function(loading, message){
+        const alertAppender = document.getElementById("alert")
+        if(loading){
+          alertAppender.innerHTML = `
+            <div class="alert alert-danger " role="alert">
+              ${message}
+            </div>`
+        } else {
+          alertAppender.innerHTML = ""
+        }
+      }
+
+
+      //Spinner
+      const spinnerToggle = function(loading){
+        if(loading){
+          document.getElementById("spinner").classList.remove("d-none")
+        } else {
+          document.getElementById("spinner").classList.add("d-none")
+        }
+      }
+      
+
     </script>
+    <script src="https://kit.fontawesome.com/c3e37fe131.js" crossorigin="anonymous"></script>
   </body>
 </html>
