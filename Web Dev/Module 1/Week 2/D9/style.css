@@ -1,0 +1,128 @@
+    body {
+        background-color: rgb(132, 214, 132);
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 3em;
+        color: #fff
+    }
+
+    header button {
+        border: none;
+        background: cadetblue;
+        color: white;
+        font-weight: 800;
+        font-size: 1.2em;
+        height: 30px;
+        width: 100px;
+        margin: 30px;
+        transition: linear 0.3s;
+    }
+
+    header button:hover {
+        border: solid 1px cadetblue;
+        background: white;
+        color: cadetblue;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    hr {
+        margin: 25px 0px;
+    }
+
+    header #table {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    header #table>div {
+
+        width: 50px;
+        height: 50px;
+        border: white solid 1px;
+        text-align: center;
+        color: white;
+        font-size: 2em;
+        font-weight: 800;
+        vertical-align: middle;
+        }
+
+    #number {
+        width: 180px;
+        border: none;
+        height: 25px;
+        padding-left: 10px;
+    }
+
+    #number:focus-visible {
+        outline: solid 1px cadetblue;
+    }
+
+    main button {
+        border: none;
+        width: 70px;
+        height: 27px;
+        color: white;
+        background-color: cadetblue;
+        font-size: 0.8em;
+        font-weight: 700;
+        transition: linear 0.3s;
+    }
+
+    main button:hover  {
+        border: solid 1px cadetblue;
+        background: white;
+        color: cadetblue;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    }
+    main>div:first-child {
+        margin: 30px;
+    }
+
+    main>div:last-child {
+        margin: 30px;
+        margin-top: 50px;
+    }
+
+    main div:last-child>div {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    main div:nth-child(2) div div{
+
+        width: 50px;
+        height: 50px;
+        border: white solid 1px;
+        text-align: center;
+        color: white;
+        font-size: 2em;
+        font-weight: 800;
+    }
+
+    .generate {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    h5 {
+        width: 200px;
+        height: 30px;
+        background-color: white;
+        text-align: center;
+        line-height: 30px;
+
+    }
+

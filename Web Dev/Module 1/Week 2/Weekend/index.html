@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>This is my Page</h1>
+        <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero similique aut, facilis blanditiis totam nesciunt beatae reprehenderit culpa ducimus nobis.</h4>
+    </header>
+    <section id="table">
+        <div class="container">
+            <div class="row">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>21</td>
+                        <td>joe@doe.com</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Andy</td>
+                        <td>Brooks</td>
+                        <td>23</td>
+                        <td>andy@gmail.com</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>George</td>
+                        <td>Jackobs</td>
+                        <td>25</td>
+                        <td>George@gmail.com</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Arnold</td>
+                        <td>Adams</td>
+                        <td>18</td>
+                        <td>arnold@gmail.com</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <div id="textChangerDiv">
+                    <input type="text" placeholder="textChange">
+                    <button onclick="changeOnClick()" id="textChangeButton">Click Me</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="enrolledStudents">
+        <div class="container">
+            <div class="row">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="form">
+        <form action="">
+            <div>
+                <label for="ID">ID</label><br>
+                <input type="text">
+            </div>
+            <div>
+                <label for="firstname">First Name</label><br>
+                <input type="text"><br>
+            </div>
+            <div>
+                <label for="surname">Surname</label><br>
+                <input type="text">
+            </div>
+            <div>
+                <label for="age">Age</label><br>
+                <input type="number">
+            </div>
+            <div>
+                <label for="email">Email</label><br>
+                <input type="text">
+            </div>
+            <input type="submit" value="Add Student!">
+        </form>
+    </section>
+    <script src="script.js"></script>
+
+</body>
+</html>

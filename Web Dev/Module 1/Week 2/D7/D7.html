@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <style>
+      .myHeading {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>This is the title of the page</h1>
+      <h2>This is the subtitle of the page</h2>
+    </header>
+
+    <main>
+      <hr />
+
+      <ul id="firstList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <ul id="secondList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <a href="strive.school">This link goes to Strive School</a>
+
+      <div>
+        <p>This text is just for the exercise</p>
+      </div>
+
+      <div>
+        <input
+          type="text"
+          id="input-field"
+          placeholder="input field for the exercise"
+        />
+      </div>
+    </main>
+
+    <footer>
+      <p>And this text is just for the exercise too!</p>
+    </footer>
+  </body>
+
+  <script>
+
+    /* E X E R C I S E    O N E
+       Write a function for changing the title of the document in something else.
+    */
+
+    const changeTitle = function (newTitle) {
+      let title = document.createElement("title")
+      title.innerText = newTitle
+      document.head.appendChild(title)
+      //
+    };
+
+    changeTitle("New Title")
+  
+    /* E X E R C I S E    T W O 
+      Write a function for changing the class of the title of the page in "myHeading".
+    */
+
+    const addClassToTitle = function () {
+      document.querySelector("h1").classList.add("myHeading")
+      
+    }
+
+    addClassToTitle()
+
+    /* E X E R C I S E    T H R E E 
+    Write a function for changing the text of only the p which are children of a div.
+    */
+
+    const changePcontent = function () {
+      document.querySelector("div>p").innerText = "Changed it"
+    };
+
+    changePcontent()
+
+    /* E X E R C I S E    F O U R
+    Write a function for changing the destination of every link to https://www.google.com
+    */
+
+    const changeUrls = function () {
+      document.querySelector("a").href = "www.google.com"
+      document.querySelector("a").innerText = "this is the link to take you to Google"
+    };
+
+    changeUrls()
+
+    /* E X E R C I S E    F I V E
+     Write a function for adding a new item in the second list.
+     */
+
+    const addToTheSecond = function (content) {
+      let newitem = document.createElement("li")
+      newitem.innerText = content
+      document.getElementById("secondList").appendChild(newitem)
+      
+    };
+
+    addToTheSecond("another one added")
+
+    /* E X E R C I S E    S I X
+    Write a function for adding a second paragraph to the div.
+    */
+
+    const addParagraph = function (content) {
+      let newpar = document.createElement("p")
+      newpar.innerText = content
+      document.querySelector("main>div").appendChild(newpar)
+    };
+
+    addParagraph("This is about a new song")
+
+    /* E X E R C I S E    S E V E N
+    Write a function for making the first UL disappear.
+    */
+
+    const firstUlDisappear = function () {
+      document.getElementById("firstList").style.display = "none"
+    };
+
+
+    /* E X E R C I S E    E I G H T
+    Write a function for making the background of every UL green.
+    */
+
+    const paintItGreen = function () {
+      let uls = document.querySelectorAll("ul")
+      for (x=0; x<uls.length; x++){
+        uls[x].style.backgroundColor = "green"
+        
+      }
+    };
+
+    paintItGreen()
+
+    /* E X E R C I S E    N I N E
+    Make the heading of the page change color every time the user clicks on it.
+    */
+
+    const makeItClickable = function () {
+        document.querySelector("h1").style.color = "purple"
+        return false
+    };  
+
+    document.querySelector("h1").onclick = makeItClickable;
+
+    /* E X E R C I S E    T E N
+    Change the footer text with something else when the user clicks on it.
+    */
+
+    const changeFooterText = function () {
+      document.querySelector("footer>p").innerText = "Something Else"
+    };
+
+    document.querySelector("footer p").onclick = changeFooterText
+
+    /* E X E R C I S E    E L E V E N
+    Attach an event listener to the input field in the page for console logging its value just after any keystroke.
+    */
+
+    const inputField = document.getElementById("input-field").onkeydown = function(){
+            console.log(document.getElementById("input-field").value);
+    }
+      
+    
+    /* E X E R C I S E    T W E L V E
+    Create a new welcome alert message when the page successfully loads.
+    */
+
+    window.onload = function () {
+      alert("Welcome")
+    };
+
+    /* E X E R C I S E    T H I R T E E N
+    Use HTML5 tags to divide the content of the page in a more semantic way.
+    */
+
+    
+  </script>
+</html>
